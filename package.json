@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/BongaKS/Generator/issues"
   },
-  "homepage": "https://github.com/BongaKS/Generator#readme"
+  "homepage": "https://github.com/BongaKS/Generator#readme",
+  "dependencies": {
+    "fs-extra": "^8.1.0",
+    "js-yaml": "^3.13.1",
+    "lodash": "^4.17.15",
+    "nunjucks": "^3.2.0",
+    "path": "^0.12.7"
+  }
 }
