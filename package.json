@@ -1,0 +1,19 @@
+{
+  "name": "generator",
+  "version": "1.0.0",
+  "description": "generates general config files",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BongaKS/Generator.git"
+  },
+  "author": "bongad",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BongaKS/Generator/issues"
+  },
+  "homepage": "https://github.com/BongaKS/Generator#readme"
+}
