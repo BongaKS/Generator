@@ -14,28 +14,31 @@ var outputDir = path.join(__dirname, './output');
 /* Check to see if the  output folders exist and create them if they don't. */
 
 function createFolders () {
-  let folders = YAML.safeLoad(fs.readFileSync(path.join(__dirname, 'values.yml'), 'utf8'));
-  var length = folders.labs.length;
+  let folders = YAML.safeLoad(fs.readFileSync(path.join(__dirname, 'sites.yml'), 'utf8'));
+  var length = folders.sites.length;
   for (var i = 0; i < length; i++) {
-    var foldername = folders.labs[i].name;
+    var foldername = folders.sites[i].name;
     var folderexist = fs.existsSync(path.join(outputDir, foldername));
     var directory = path.join(outputDir, foldername);
+    var fileNameOut = folders.sites[i].name + folders.sites[i].extention;
     if (folderexist === false) {
-      fs.mkdir(directory);
-      renderTemplate(directory);
+      fs.mkdir(directory, { recursive: true }, (err) => {
+        if (err) throw err;
+      });
     } else {
       console.log('The directory ' + directory + ' already exists');
       renderTemplate(directory);
     }
+    renderTemplate(directory, fileNameOut);
   }
 }
 
 /* Function that creates the template */
 
-function renderTemplate (outputDir) {
-  let Templatefile = fs.readFileSync(path.join(templateDir, 'main.rb.j2'), 'utf8');
+function renderTemplate (outputDir, fileNameOut) {
+  let Templatefile = fs.readFileSync(path.join(templateDir, 'nginx.rb.j2'), 'utf8');
   let values = YAML.safeLoad(fs.readFileSync(path.join(__dirname, 'values.yml'), 'utf8'));
-  let outputFile = path.join(outputDir, 'main.tf');
+  let outputFile = path.join(outputDir, fileNameOut);
   let nujucksOutput = nunjucksEnv.renderString(Templatefile, values);
   fs.writeFileSync(outputFile, nujucksOutput);
 }

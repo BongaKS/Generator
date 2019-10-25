@@ -1,0 +1,12 @@
+sites:
+  - name: wiggle
+    extention: .com
+
+  - name: smesh.
+    extention: .com
+
+  - name: smesh.
+    extention: .edu
+
+  - name: smesh.
+    extention: .gov
