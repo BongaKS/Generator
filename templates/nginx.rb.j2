@@ -1,0 +1,28 @@
+server {
+        listen {{port}} default_server;
+        listen [::]:{{port}} default_server;
+
+        root /var/www/html;
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name {{Root_server}};
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+}
+
+    location /{{endpoint}}/ {
+        proxy_pass_request_headers	on;
+        proxy_pass http://{{endpoint_server}}/;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Host $host;
+        proxy_set_header X-Forwarded-Server $host;
+        proxy_set_header X-Forwarded-Proto https;
+        proxy_set_header SSL_PROTOCOL $ssl_protocol;
+        proxy_set_header SSL_CLIENT_CERT $ssl_client_cert;
+        proxy_set_header SSL_CLIENT_VERIFY $ssl_client_verify;
+        proxy_set_header SSL_SERVER_S_DN $ssl_client_s_dn;
+    }

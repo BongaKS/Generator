@@ -1,0 +1,5 @@
+values:
+  - port : 80
+    Root_server : "server name"
+    endpoint : "endpoint"
+    endpoint_server : "server"
