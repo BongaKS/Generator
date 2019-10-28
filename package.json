@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/BongaKS/Generator#readme",
   "dependencies": {
+    "fs": "0.0.1-security",
     "fs-extra": "^8.1.0",
     "js-yaml": "^3.13.1",
     "lodash": "^4.17.15",
